@@ -1,8 +1,9 @@
+import express from 'express';
 
-exports.addMessage = (req, res) => {
+exports.addMessage = (req : express.Request, res: express.Response) => {
     try{
         //destructure data from req.body
-        const { conversation_id, message } = req.body;
+        const { conversation_id, message} = req.body;
     
         //validate conversation_id
         if(conversation_id.length < 1) return res.status(400).json({
@@ -10,16 +11,16 @@ exports.addMessage = (req, res) => {
         })
     
     
-        let response = "Sorry, I don't understant";
-        let statusCode = 404;
+        let response: string = "Sorry, I don't understant";
+        let statusCode: number = 404;
     
         //remove special characters from the message
-        trimStr = message.replace(/[^a-zA-Z ]/g, "");
+        const trimStr: string = message.replace(/[^a-zA-Z ]/g, "");
     
         //get first match context
-        const regexp = /\b(?:Hello|hi|Goodbye|bye)\b/gi;
-        const matchArr = trimStr.match(regexp);
-        const firstMatch = matchArr && matchArr[0].toLowerCase();
+        const regexp: string | RegExp = /\b(?:Hello|hi|Goodbye|bye)\b/gi;
+        const matchArr: string[] | null = trimStr.match(regexp);
+        const firstMatch: any = matchArr && matchArr[0].toLowerCase();
     
         //return response base on first context encounter
         if(['Hello', 'Hi'].map(str => str.toLowerCase()).includes(firstMatch)){

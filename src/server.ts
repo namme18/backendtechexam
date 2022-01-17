@@ -1,5 +1,5 @@
-const express = require('express');
-const app = express();
+import express from 'express';
+const app: express.Application = express();
 
 app.use(express.json());
 //API url path = 'http://localhost:5000/user/addmessage'

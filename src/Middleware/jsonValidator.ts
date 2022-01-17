@@ -1,6 +1,7 @@
 const Ajv = require("ajv");
+import express from "express";
 
-const jsonValidator = (req, res, next) => {
+const jsonValidator = (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try{
             const ajv = new Ajv();
 
