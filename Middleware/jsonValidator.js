@@ -1,4 +1,4 @@
-const Ajv = require('ajv');
+const Ajv = require("ajv");
 
 const jsonValidator = (req, res, next) => {
     try{
@@ -26,4 +26,5 @@ const jsonValidator = (req, res, next) => {
         return res.status(400).json(err);
     }
 }
+
 module.exports = jsonValidator;
